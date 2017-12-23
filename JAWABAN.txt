@@ -1,0 +1,17 @@
+1. Library 
+- backbone.js : Backbone.js 1.1.2
+http://backbonejs.org
+
+- Bootstrap v3.1.1
+http://getbootstrap.com
+
+-jQuery JavaScript Library v1.11.1 (ui & css)
+http://jquery.com/
+
+- Underscore.js 1.6.0
+http://underscorejs.org
+
+3. untuk ketiga browser tsb, code dapat berjalan dengan baik.
+
+2. mengubah waktu delay pada setInterval,
+ atau dengan menggunakan requestAnimationFrame() <== need to learn more
