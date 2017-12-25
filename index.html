@@ -14,32 +14,39 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
-<div class="button">
-	<button id="start">START</button>
-	<button id="pause">PAUSE</button>
-	<button id="resume">RESUME</button>
-	<button id="stop">STOP</button>
-	<p id="score"><b></b></p>
-</div>
-<ul id="id_score" style="display:none"></ul>
+	<div class="button">
+		<button id="start">START</button>
+		<button id="pause">PAUSE</button>
+		<button id="resume">RESUME</button>
+		<button id="stop">STOP</button>
+		<p id="score"><b></b></p>
+	</div>
+	<ul id="id_score" style="display:none"></ul>
 <script type="text/javascript">
 var company_names = ["Agung Podomoro Group","Citibank","Nokia Solution and Networks PT","Bhinneka.com","Tripatra","RCTI","TelkomSigma","Intrias Mandiri Sejati PT","Altermyth","Panin Bank","Gramedia Bookstore","Garuda Indonesia","Chevron Pacific","Darmex Agro","Bank SBI Indonesia PT","DBS Bank","UPS Cardig International PT","Tately NV","Cigna","Antam"];
 var typer = new Typer();
 var interval;
+var start = 0;
+var pause = 0;
 $(document).ready(function() {
 	$( "#start" ).click(function() {
-		interval = typer.start();
+		start = 1;
+		interval = typer.start(start);
 		document.getElementById("start").disabled = true;
 	});
 	$("#stop" ).click(function() {
 		location.reload();
 	});
 	$("#pause" ).click(function() {
+		pause=1;
 		clearInterval(interval);
 		// typer.start();
 	});
 	$("#resume" ).click(function() {
-		interval = typer.start();
+		if(pause==1){
+			interval = typer.start(start);
+		}
+		pause = 0;
 	});
 });
 </script>

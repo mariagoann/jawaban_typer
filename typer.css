@@ -1,3 +1,22 @@
 body {
 	background-color:#eee;
 }
+
+@media screen and (min-width: 460px) and (max-width:720px) {
+	body{
+
+		background-color:#eee;
+        float:left;
+        display:inline-block;
+        min-width:200px;
+	}
+}
+
+@media screen and (max-width:460px) {
+	body{
+		background-color:#eee;
+		float: none;
+        display: block;
+        width: 100%;
+	}
+}

@@ -10,7 +10,10 @@ var Words = Backbone.Collection.extend({
 
 var WordView = Backbone.View.extend({
 	initialize: function() {
-		$(this.el).css({position:'absolute'});
+		$(this.el).css
+					({
+						position:'absolute',
+					});
 		var string = this.model.get('string');
 		var letter_width = 25;
 		var word_width = string.length * letter_width;
@@ -27,7 +30,7 @@ var WordView = Backbone.View.extend({
 						'background-color':'#fff',
 						border:'1px solid #ccc',
 						'text-align':'center',
-						float:'left'
+						float:'left',
 					})
 					.text(string.charAt(i).toUpperCase()));
 		}
@@ -67,7 +70,6 @@ var TyperView = Backbone.View.extend({
 		this.wrapper = wrapper;
 		
 		var self = this;
-		// var buttonStop = $("<div class='but'><button id='stop'>STOP</button><button id='pause'>PAUSE</button><button id='resume'>RESUME</button></div>");
 		var text_input = $('<input>')
 			.addClass('form-control')
 			.css({
@@ -81,7 +83,7 @@ var TyperView = Backbone.View.extend({
 				'z-index':'1000'
 			}).keyup(function() {
 				var words = self.model.get('words');
-				var flag =0;
+				var flag = 0;
 				for(var i = 0;i < words.length;i++) {
 					var word = words.at(i);
 					var typed_string = $(this).val();
@@ -105,9 +107,8 @@ var TyperView = Backbone.View.extend({
 						 // }
 					} else {
     					word.set({highlight:0});
-					}
+    				}
 				}
-
 			});
 		
 		$(this.el)
@@ -169,7 +170,7 @@ var Typer = Backbone.Model.extend({
 	// 	});
 	// },
 
-	start: function() {
+	start: function(flag) {
 		var self = this;
 		var animation_delay = 100; 
 		/*Animation looks best at 60 fps (frames per second). 60fps is an update every ~16.7ms.
@@ -177,15 +178,15 @@ var Typer = Backbone.Model.extend({
 		https://stackoverflow.com/questions/31416723/how-to-smooth-out-setinterval-animation*/
 		var counter;
 		// alert(flag);
-
-		new TyperView({
-			model: this,
-			el: $(document.body)
-		});
-		counter = setInterval(function() {
-			self.iterate();
-		},animation_delay);
-
+		if(flag==1){
+			new TyperView({
+				model: this,
+				el: $(document.body)
+			});
+			counter = setInterval(function() {
+				self.iterate();
+			},animation_delay);
+		}
 		return counter;
 		//batas
 	},
